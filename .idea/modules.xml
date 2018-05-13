@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/NPointGaussianQuadratureRule/NPointGaussianQuadratureRule.iml" filepath="$PROJECT_DIR$/NPointGaussianQuadratureRule/NPointGaussianQuadratureRule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SimpsonRule/SimpsonRule.iml" filepath="$PROJECT_DIR$/SimpsonRule/SimpsonRule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TrapezoidalRule/TrapezoidalRule.iml" filepath="$PROJECT_DIR$/TrapezoidalRule/TrapezoidalRule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TwoPointGaussianQuadratureRule/TwoPointGaussianQuadratureRule.iml" filepath="$PROJECT_DIR$/TwoPointGaussianQuadratureRule/TwoPointGaussianQuadratureRule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-numerical-integration.iml" filepath="$PROJECT_DIR$/java-numerical-integration.iml" />
+    </modules>
+  </component>
+</project>
