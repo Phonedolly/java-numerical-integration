@@ -31,7 +31,7 @@ public class SimpsonRule{
             resultSum += func.funcResult[i];
         }
         double result = resultSum * (func.dx / 3);
-        System.out.println("정적분의 값 = : " + result);
+        System.out.println("정적분의 근사값 = : " + result);
     }
 }
 

@@ -27,7 +27,7 @@ public class NPointGaussianQuadratureRule{
             resultSum += func.funcResult[i];
         }
         double result = func.numM * resultSum;
-        System.out.println("정적분의 값 = : " + result);
+        System.out.println("정적분의 근사값 = : " + result);
     }
 }
 
