@@ -4,18 +4,12 @@ public class NPointGaussianQuadratureRule{
     public static void main(String[] args) {
         //새 Func 인스턴트를 생성할 때 생성자에 의해 조건이 입력된다
         Func func = new Func();
-
-        /*만들어야 할 것
-        INT f(x) dx, x from a to b = ((b-a)/2) * INT f(((b-a)/2)xi) + (b+a)/2) dx
-         = ((b-a)/2) * SUM wi * f(((b-a)/2)xi) + (b+a)/2), i 1 to n
-
+        /*
          Reference: https://pomax.github.io/bezierinfo/legendre-gauss.html
          */
         double resultSum = 0;
-
-        for (int i = 0; i < func.xN.length; i++) {
-
-            func.func(i, func.numP, func.numM); // 함수값 구하기
+        for (int i = 0; i < func.intN; i++) {
+            func.func(i); // 함수값 구하기
 
             //디버그 전용
             System.out.println("funcResult[" + i + "] : " + func.funcResult[i]);
@@ -27,7 +21,7 @@ public class NPointGaussianQuadratureRule{
 }
 
 class Func{
-    public double[][] xN; //배열을 선언 후 공간을 지정해줘야 한다. Sample Point.
+    public double[][] wxN; //배열을 선언 후 공간을 지정해줘야 한다. Sample Point.
     public double[] funcResult;
     public double intStart; //적분 시작구간
     public double intFinal; //적분 끝나는 구간
@@ -53,17 +47,17 @@ class Func{
         } while (intN < 2 || intN > 20);
 
         funcResult = new double[intN]; //sample point가 n개이므로, 배열 요소의 개수는 n
-        xN = new double[intN][intN]; //sample point가 n개이므로, 배열 요소의 개수는 n. wi와 xi를 저장.
+        wxN = new double[intN][intN]; //sample point가 n개이므로, 배열 요소의 개수는 n. wi와 xi를 저장.
         // [0 가중치, 1 x좌표][순서]
-        for(int j = 0; j < xN.length; j++) {
-
+        for(int j = 0; j < intN; j++) {
+            wxN[0][j] = WeightsAbscissae.weights[intN - 2][j];
+            wxN[1][j] = WeightsAbscissae.abscissa[intN - 2][j];
         }
     }
 
     // f(x) = x^3
-    public void func(int cycle, double numP, double numM) {
-//        funcResult[cycle] = (1 * Math.pow(xN[cycle], 3)) + 0;
-        funcResult[cycle] = xN[0][cycle] * (Math.pow(((numM * xN[1][cycle]) + numP), 3) + 0) ;
+    public void func(int cycle) {
+        funcResult[cycle] = wxN[0][cycle] * (Math.pow(((numM * wxN[1][cycle]) + numP), 3) + 0) ;
     }
 
     //TODO 수식 입력 방법 연구
