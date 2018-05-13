@@ -12,7 +12,6 @@ public class TrapezoidalRule{
             if ((i != 0) && (i != func.intN)) {
                 func.funcResult[i] = 2 * func.funcResult[i];
             }
-
             //디버그 전용
             System.out.println("funcResult[" + i + "] : " + func.funcResult[i]);
             resultSum += func.funcResult[i];
@@ -57,8 +56,17 @@ class Func{
     }
 
     // f(x) = x
-    public void func(int cycle) {
+    public void linearFunc(int cycle) {
         funcResult[cycle] = (1 * xN[cycle]) + 0;
+    }
+
+    public void sinFunc(int cycle) {
+        funcResult[cycle] = Math.sin(xN[cycle]);
+    }
+
+    //f(x) = x^3 * e^x * sinx
+    public void func(int cycle) {
+        funcResult[cycle] = Math.pow(xN[cycle], 3) * Math.exp(xN[cycle]) * Math.sin(xN[cycle]);
     }
 
     //TODO 수식 입력 방법 연구

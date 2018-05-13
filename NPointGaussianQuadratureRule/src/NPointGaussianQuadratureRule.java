@@ -56,8 +56,12 @@ class Func{
     }
 
     // f(x) = x^3
-    public void func(int cycle) {
+    public void func1(int cycle) {
         funcResult[cycle] = wxN[0][cycle] * (Math.pow(((numM * wxN[1][cycle]) + numP), 3) + 0) ;
+    }
+    //f(x) = x^3 * e^x * sinx
+    public void func(int cycle) {
+        funcResult[cycle] = wxN[0][cycle] * Math.pow(numM * wxN[1][cycle] + numP, 3) * Math.exp(numM * wxN[1][cycle] + numP) * Math.sin(numM * wxN[1][cycle] + numP);
     }
 
     //TODO 수식 입력 방법 연구
