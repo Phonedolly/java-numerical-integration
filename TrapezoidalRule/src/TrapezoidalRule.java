@@ -2,14 +2,10 @@ import java.util.Scanner;
 
 public class TrapezoidalRule{
     public static void main(String[] args) {
-
         //새 Func 인스턴트를 생성할 때 생성자에 의해 조건이 입력된다
         Func func = new Func();
-
         double resultSum = 0;
-
         for (int i = 0; i < func.xN.length; i++) {
-
             func.func(i); // 함수값 구하기
 
             // 사다리꼴 공식에 의해, 첫 항과 마지막 항을 제외하고 계수가 2이다
@@ -42,8 +38,10 @@ class Func{
         System.out.print("적분 구간의 끝점을 입력하십시오: x = ");
         intFinal = scanner.nextInt();
 
-        System.out.print("적분 구간을 몇 등분할 것인지 입력하십시오: n = ");
-        intN = scanner.nextInt();
+        do {
+            System.out.print("적분 구간을 몇 등분할 것인지 입력하십시오(단, n >= 1): n = ");
+            intN = scanner.nextInt();
+        } while (intN < 1);
 
         xN = new double[intN + 1]; //n등분 했으므로 n + 1개의 x좌표가 필요하다
         funcResult = new double[intN + 1]; //n등분 했으므로 n + 1개의 함숫값이 필요하다

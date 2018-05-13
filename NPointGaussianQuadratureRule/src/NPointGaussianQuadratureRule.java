@@ -1,10 +1,7 @@
 import java.util.Scanner;
 
 public class NPointGaussianQuadratureRule{
-
-
     public static void main(String[] args) {
-
         //새 Func 인스턴트를 생성할 때 생성자에 의해 조건이 입력된다
         Func func = new Func();
 
@@ -14,8 +11,6 @@ public class NPointGaussianQuadratureRule{
 
          Reference: https://pomax.github.io/bezierinfo/legendre-gauss.html
          */
-
-
         double resultSum = 0;
 
         for (int i = 0; i < func.xN.length; i++) {
@@ -37,7 +32,6 @@ class Func{
     public double intStart; //적분 시작구간
     public double intFinal; //적분 끝나는 구간
     public int intN; //나누는 구간의 수
-//    public double dx;
 
     double numP; // (b+a)/2
     double numM; // (b-a)/2
@@ -53,8 +47,10 @@ class Func{
         numP = (intFinal + intStart) / 2; // (b+a)/2
         numM = (intFinal - intStart) / 2; // (b-a)/2
 
-        System.out.print("Sample Point의 수를 입력하십시오: n = ");
-        intN = scanner.nextInt();
+        do {
+            System.out.print("Sample Point의 수를 입력하십시오(단, 2 <= n <= 20): n = ");
+            intN = scanner.nextInt();
+        } while (intN < 2 || intN > 20);
 
         funcResult = new double[intN]; //sample point가 n개이므로, 배열 요소의 개수는 n
         xN = new double[intN][intN]; //sample point가 n개이므로, 배열 요소의 개수는 n. wi와 xi를 저장.
@@ -62,15 +58,6 @@ class Func{
         for(int j = 0; j < xN.length; j++) {
 
         }
-
-        //먼저 n = 2일때로 해보자
-        //가중치
-        xN[0][0] = 1.000000;
-        xN[0][1] = 1.000000;
-
-        //x좌표
-        xN[1][0] = -0.577350;
-        xN[1][1] = 0.577350;
     }
 
     // f(x) = x^3
@@ -132,9 +119,4 @@ class WeightsAbscissae {
                 {0, -0.160358, 0.160358, -0.316564, 0.316564, -0.464570, 0.464570, -0.600545, 0.600545, -0.720966, 0.720966, -0.822714, 0.822714, -0.903155, 0.903155, -0.960208, 0.960208, -0.992406, 0.992406},
                 {-0.076526, 0.076526, -0.227785, 0.227785, -0.373706, 0.373706, -0.510867, 0.510867, -0.636053, 0.636053, -0.746331, 0.746331, -0.839116, 0.839116, -0.912234, 0.912234, -0.963971, 0.963971, -0.993128, 0.993128}};
     }
-
-    public double data() {
-        return 0;
-    }
-
 }
