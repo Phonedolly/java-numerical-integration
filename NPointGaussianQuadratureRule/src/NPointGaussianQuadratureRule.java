@@ -40,8 +40,8 @@ class Func{
     public int intN; //나누는 구간의 수
 //    public double dx;
 
-    double numP; // (b-a)/2
-    double numM; // (b+a)/2
+    double numP; // (b+a)/2
+    double numM; // (b-a)/2
 
     public Func() {
         Scanner scanner = new Scanner(System.in);
@@ -51,20 +51,36 @@ class Func{
         System.out.print("적분 구간의 끝점을 입력하십시오: x = ");
         intFinal = scanner.nextInt();
 
-        System.out.println("Sample Point의 수를 입력하십시오: n = ");
+        numP = (intFinal + intStart) / 2; // (b+a)/2
+        numM = (intFinal - intStart) / 2; // (b-a)/2
+
+        System.out.print("Sample Point의 수를 입력하십시오: n = ");
         intN = scanner.nextInt();
 
-        xN = new double[intN - 1][intN - 1]; //sample point가 n개이므로, 배열 요소의 개수는 n - 1. wi와 xi를 저장.
-        xN[0]
-        funcResult = new double[intN - 1]; //sample point가 n개이므로, 배열 요소의 개수는 n - 1
-        numP = (intFinal - intStart) / 2; // (b-a)/2
-        numM = (intFinal + intStart) / 2; // (b+a)/2
+        xN = new double[intN][intN]; //sample point가 n개이므로, 배열 요소의 개수는 n. wi와 xi를 저장.
+        // [0 가중치, 1 x좌표][순서]
+        for(int j = 0; j < xN.length; j++) {
+
+        }
+
+        //먼저 n = 2일때로 해보자
+        //가중치
+        xN[0][0] = 1.000000;
+        xN[0][1] = 1.000000;
+
+        //x좌표
+        xN[1][0] = -0.577350;
+        xN[1][1] = 0.577350;
+
+
+        funcResult = new double[intN]; //sample point가 n개이므로, 배열 요소의 개수는 n
+
     }
 
     // f(x) = x^3
     public void func(int cycle, double numP, double numM) {
 //        funcResult[cycle] = (1 * Math.pow(xN[cycle], 3)) + 0;
-        funcResult[cycle] = xN[cycle][0] * Math.pow(((numM * xN[cycle][1]) + numP), 3);
+        funcResult[cycle] = xN[0][cycle] * Math.pow(((numM * xN[1][cycle]) + numP), 3);
     }
 
     //TODO 수식 입력 방법 연구
@@ -72,4 +88,8 @@ class Func{
         //수식을 입력 받자
         System.out.println("수식을 입력하십시오: ");
     }
+}
+
+enum WeightsAbscissae {
+
 }
