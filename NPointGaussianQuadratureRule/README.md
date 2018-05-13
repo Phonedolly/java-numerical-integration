@@ -1,0 +1,1 @@
+lgvalues-abscissa-cut.php와 lgvalues-weights-cut.php는 https://pomax.github.io/bezierinfo/legendre-gauss.html에서 참조하였습니다.
