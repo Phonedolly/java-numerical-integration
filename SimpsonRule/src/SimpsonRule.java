@@ -36,7 +36,7 @@ public class SimpsonRule{
 }
 
 class Func{
-    public double[] xN; //배열을 선언 후 공간을 지정해줘야 한다
+    public double[] xN; //배열을 선언한 뒤에 공간을 지정해줘야 한다
     public double[] funcResult;
     public double intStart; //적분 시작구간
     public double intFinal; //적분 끝나는 구간
