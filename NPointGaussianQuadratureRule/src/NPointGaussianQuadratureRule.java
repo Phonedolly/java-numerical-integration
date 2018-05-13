@@ -22,7 +22,6 @@ public class NPointGaussianQuadratureRule{
 
             func.func(i, func.numP, func.numM); // 함수값 구하기
 
-
             //디버그 전용
             System.out.println("funcResult[" + i + "] : " + func.funcResult[i]);
             resultSum += func.funcResult[i];
@@ -57,6 +56,7 @@ class Func{
         System.out.print("Sample Point의 수를 입력하십시오: n = ");
         intN = scanner.nextInt();
 
+        funcResult = new double[intN]; //sample point가 n개이므로, 배열 요소의 개수는 n
         xN = new double[intN][intN]; //sample point가 n개이므로, 배열 요소의 개수는 n. wi와 xi를 저장.
         // [0 가중치, 1 x좌표][순서]
         for(int j = 0; j < xN.length; j++) {
@@ -71,16 +71,12 @@ class Func{
         //x좌표
         xN[1][0] = -0.577350;
         xN[1][1] = 0.577350;
-
-
-        funcResult = new double[intN]; //sample point가 n개이므로, 배열 요소의 개수는 n
-
     }
 
     // f(x) = x^3
     public void func(int cycle, double numP, double numM) {
 //        funcResult[cycle] = (1 * Math.pow(xN[cycle], 3)) + 0;
-        funcResult[cycle] = xN[0][cycle] * Math.pow(((numM * xN[1][cycle]) + numP), 3);
+        funcResult[cycle] = xN[0][cycle] * (Math.pow(((numM * xN[1][cycle]) + numP), 3) + 0) ;
     }
 
     //TODO 수식 입력 방법 연구
